@@ -4,6 +4,8 @@
 #include <ios>
 #include <vector>
 #include <algorithm>
+#include <sstream>
+#include <map>
 
 using std::cout;
 using std::cin;
@@ -13,6 +15,11 @@ using std::string;
 using std::streamsize;
 using std::vector;
 using std::sort;
+using std::reverse;
+using std::stringstream;
+using std::map;
+
+typedef vector<double>::size_type vec_size;
 
 void averageProcess() {
     // ask for and read the student's name
@@ -106,8 +113,86 @@ int medianProcess() {
     return 0;
 }
 
+void exercise_31() {
+    vector<double> values = {1, 2, 3, 4, 5};
+    vec_size size = values.size();
+    vec_size mid = size / 2;
+
+    // don't know this one...
+
+    double median = size % 2 == 0
+                    ? values[mid] + values[mid - 1] - 2
+                    : values[mid];
+
+    cout << median << endl;
+}
+
+void exercise_32() {
+    vector<int> values = {3, 9, 57, 7, 23, 5, 13};
+    vector<double> quarters;
+    for (int value : values) {
+        double quarter = (double) value / 4;
+        quarters.push_back(quarter);
+    }
+    sort(quarters.begin(), quarters.end());
+    reverse(quarters.begin(), quarters.end());
+    for (double quarter : quarters) {
+        cout << quarter << endl;
+    }
+}
+
+void exercise_33() {
+    string input = "hello there this is a hello input";
+    string buffer;
+    stringstream ss(input);
+
+    map<string, int> wordsMap;
+    while (ss >> buffer) {
+        if (wordsMap.find(buffer) == wordsMap.end()) {
+            wordsMap[buffer] = 1;
+        } else {
+            wordsMap[buffer]++;
+        }
+    }
+
+    for (auto word : wordsMap) {
+        cout << word.first << " -> " << word.second << endl;
+    }
+}
+
+void exercise_34() {
+    string input = "hello there this is a Leonardo hello input";
+    string buffer;
+    stringstream ss(input);
+    string::size_type smallest = 0, longest = 0;
+
+    while (ss >> buffer) {
+        string::size_type length = buffer.size();
+        if (smallest == 0 || length < smallest) {
+            smallest = length;
+        }
+
+        if (longest == 0 || length > longest) {
+            longest = length;
+        }
+    }
+
+    cout << "Smallest: " << smallest << endl;
+    cout << "Longest: " << longest << endl;
+}
+
+void exercise_35() {
+
+}
+
 int main() {
+//    exercise_31();
+//    exercise_32();
+//    exercise_33();
+//    exercise_34();
+    exercise_35();
+
+//    return medianProcess();
     // averageProcess();
-    // return 0;
-    return medianProcess();
+     return 0;
 }
