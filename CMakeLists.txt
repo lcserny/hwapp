@@ -3,4 +3,4 @@ project(hwapp)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(hwapp main_ch2.cpp)
+add_executable(hwapp main_ch3.cpp)
