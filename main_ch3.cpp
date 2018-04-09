@@ -182,7 +182,49 @@ void exercise_34() {
 }
 
 void exercise_35() {
+    vector<string> students;
+    vector<double> grades;
+    string name;
+    double grade1, grade2, grade3, grade4;
 
+    for (int i = 0; i < 2; ++i) {
+        cout << "Please enter student[" << i << "] name: " << endl;
+        cin >> name;
+        students.push_back(name);
+
+        cout << "Please enter the four grades for student[" << i << "]: " << endl;
+        cin >> grade1 >> grade2 >> grade3 >> grade4;
+        grades.push_back((grade1 + grade2 + grade3 + grade4) / 4);
+    }
+
+    for (int i = 0; i < students.size(); i++) {
+        string student = students[i];
+        double grade = grades[i];
+        cout << student << " -> " << grade << endl;
+    }
+}
+
+void exercise_36() {
+    cout << "Please enter a student's name: ";
+    string name;
+    cin >> name;
+
+    cout << "Please enter two grades: ";
+    vector<double> grades;
+    double grade;
+    while (cin >> grade) {
+        grades.push_back(grade);
+    }
+
+    double average = 0;
+    for (double g : grades) {
+        if (g != 0) {
+            average += g;
+        }
+    }
+    average /= grades.size();
+
+    cout << "Average is: " << average << endl;
 }
 
 int main() {
@@ -190,7 +232,8 @@ int main() {
 //    exercise_32();
 //    exercise_33();
 //    exercise_34();
-    exercise_35();
+//    exercise_35();
+    exercise_36();
 
 //    return medianProcess();
     // averageProcess();
